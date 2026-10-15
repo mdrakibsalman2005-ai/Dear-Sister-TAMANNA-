@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Special Birthday ✨</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+  --gold: #f8d477;
+  --dark: #080711;
+  --pink: #ff83b5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  background:
+    radial-gradient(ellipse at top, #332044 0%, transparent 55%),
+    linear-gradient(145deg, #080711, #171024 65%, #080711);
+}
+
+.stars, .confetti-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.stars { z-index: 0; }
+
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 12px var(--gold);
+  animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .15; transform: scale(.7); }
+  to { opacity: 1; transform: scale(1.5); }
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: min(92%, 680px);
+  margin: auto;
+  min-height: 100vh;
+  padding: 65px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--gold);
+  letter-spacing: 5px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.line {
+  width: 85px;
+  height: 1px;
+  margin: 22px auto;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(42px, 10vw, 78px);
+  line-height: 1.05;
+  font-weight: 600;
+  margin: 15px 0;
+  background: linear-gradient(110deg, #fff2c0, #e7b94e, #fff8db, #d6a13b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 22px #e7b94e35);
+}
+
+.name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 8vw, 55px);
+  color: #ffb9d4;
+  text-shadow: 0 0 25px #ff83b566;
+  margin: 8px 0 18px;
+  overflow-wrap: anywhere;
+}
+
+.cake {
+  font-size: 100px;
+  margin: 12px 0;
+  filter: drop-shadow(0 0 25px #f8d47735);
+  animation: floatCake 3s ease-in-out infinite;
+}
+
+@keyframes floatCake {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+.message {
+  max-width: 480px;
+  margin: 10px auto;
+  color: #ded7e9;
+  font-size: 14px;
+  line-height: 2;
+  font-weight: 300;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.gold-button {
+  border: 1px solid var(--gold);
+  border-radius: 40px;
+  padding: 15px 29px;
+  margin-top: 25px;
+  color: #211507;
+  background: linear-gradient(120deg, #f3cc73, #fff0b9, #dcae45);
+  box-shadow: 0 0 25px #f8d47722;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.gold-button:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 35px #f8d47755;
+}
+
+.surprise {
+  display: none;
+  width: 100%;
+  margin-top: 32px;
+  padding: 25px 20px;
+  border: 1px solid #f8d47755;
+  border-radius: 20px;
+  background: #ffffff08;
+  animation: reveal .8s ease both;
+}
+
+.surprise h2 {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--gold);
+  font-size: 34px;
+  margin-bottom: 12px;
+}
+
+.surprise p {
+  font-size: 13px;
+  line-height: 2;
+  color: #eee4f6;
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.confetti {
+  position: fixed;
+  top: -20px;
+  z-index: 5;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(115vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.footer {
+  color: #aaa0bb;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-top: 40px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+<div class="confetti-layer" id="confettiLayer"></div>
+
+<main class="container">
+  <div class="eyebrow">A little magic, just for you</div>
+
+  <div class="line"></div>
+
+  <p style="color:#ded7e9;font-size:14px;">
+    Today is all about celebrating
+  </p>
+
+  <!-- CHANGE THE NAME BELOW -->
+  <div class="name" id="birthdayName">Tamanna</div>
+
+  <h1>Happy Birthday</h1>
+
+  <div class="cake" aria-label="Birthday cake">🎂</div>
+
+  <p class="message">
+    May your life shine brighter than the stars,
+    may your heart always find reasons to smile,
+    and may every new chapter bring beautiful
+    memories, endless love, and wonderful dreams.
+  </p>
+
+  <div class="line"></div>
+
+  <p style="color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:23px;">
+    You deserve all the beautiful things in life. ♡
+  </p>
+
+  <button class="gold-button" id="surpriseButton"
+          onclick="openSurprise()">
+    ✨ Open Your Special Surprise
+  </button>
+
+  <section class="surprise" id="surprise" aria-live="polite">
+    <h2>Make a Wish! 💖</h2>
+    <p>
+      Another year. Another beautiful beginning.<br>
+      Never stop dreaming, never stop shining.<br>
+      The world is brighter because you are in it.
+    </p>
+    <div style="font-size:35px;margin-top:15px;">
+      🎉 🎁 💝 🥂
+    </div>
+    <button class="gold-button" onclick="celebrate()">
+      🎊 Celebrate!
+    </button>
+  </section>
+
+  <div class="footer">MADE WITH LOVE · JUST FOR YOU</div>
+</main>
+
+<script>
+const starField = document.getElementById('stars');
+
+for (let i = 0; i < 100; i++) {
+  const star = document.createElement('span');
+  star.className = 'star';
+  star.style.left = Math.random() * 100 + '%';
+  star.style.top = Math.random() * 100 + '%';
+  star.style.animationDelay = Math.random() * 3 + 's';
+  star.style.animationDuration = (1 + Math.random() * 3) + 's';
+  starField.appendChild(star);
+}
+
+function openSurprise() {
+  const surprise = document.getElementById('surprise');
+  surprise.style.display = 'block';
+  document.getElementById('surpriseButton').textContent =
+    '💖 Your surprise is open!';
+  celebrate();
+  surprise.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function celebrate() {
+  const symbols = ['✨', '💖', '🎉', '🎊', '⭐', '💕', '🌟'];
+
+  for (let i = 0; i < 65; i++) {
+    const item = document.createElement('span');
+    item.className = 'confetti';
+    item.textContent = symbols[
+      Math.floor(Math.random() * symbols.length)
+    ];
+    item.style.left = Math.random() * 100 + 'vw';
+    item.style.fontSize = (12 + Math.random() * 20) + 'px';
+    item.style.animationDuration = (3 + Math.random() * 4) + 's';
+    item.style.animationDelay = Math.random() * 1.5 + 's';
+
+    document.body.appendChild(item);
+    setTimeout(() => item.remove(), 8500);
+  }
+}
+</script>
+
+</body>
+</html>
